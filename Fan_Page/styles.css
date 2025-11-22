@@ -1,0 +1,829 @@
+/*
+=====================================================
+--- ESTILOS GENERALES ---
+Aquí se define la apariencia base de toda la página.
+=====================================================
+*/
+
+/* Estilos generales del cuerpo */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-image: url("img/Fondo.jpg");
+  /* Fondo para ESCRITORIO */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* El fondo no se mueve al hacer scroll */
+  background-color: #1a1a1a;
+  /* Color por si la imagen no carga */
+
+  /* 1. Cursor general de la página */
+  cursor: url("resources/Normal_select.cur"), auto;
+}
+
+/* Configuración base del video (oculto en escritorio) */
+.mobile-video {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: -1;
+  background-color: #1a1a1a;
+}
+
+/*
+=====================================================
+--- ENCABEZADO Y BARRA DE NAVEGACIÓN (HEADER / NAV) ---
+Estilos para la barra superior, título y menú.
+=====================================================
+*/
+
+/* Contenedor principal del encabezado */
+header {
+  background-color: #333;
+  color: #fff;
+  /* El padding (relleno) se define abajo en el <nav> */
+  position: sticky;
+  /* Estas 3 opciones mantienen la navbar fija al hacer scrol*/
+  top: 0;
+  z-index: 50;
+}
+
+/* Texto del título principal (dentro del nav) */
+header h1 {
+  font-size: 1.75rem;
+  /* 1.75 veces el tamaño de fuente base */
+  margin: 0;
+  display: inline-block;
+  /* Importante para el centrado */
+}
+
+
+/* Barra de navegación (nav bar) */
+nav {
+  display: flex;
+  /* Activa Flexbox para alinear elementos */
+  justify-content: space-between;
+  /* Alinea los 3 grupos */
+  align-items: center;
+  /* Centra verticalmente los items */
+  padding: 0.5rem 20px;
+  /* Relleno: 0.5rem arriba/abajo, 20px izquierda/derecha */
+  position: relative;
+  /* Necesario para posicionar el menú desplegable */
+  min-height: 40px;
+  /* Altura mínima de la barra */
+}
+
+/* Grupos de alineación dentro del Nav (Izquierda, Centro, Derecha) */
+.nav-left,
+.nav-center,
+.nav-right {
+  flex: 1;
+  /* Cada grupo toma 1/3 del espacio */
+  display: flex;
+  align-items: center;
+  /* Centra verticalmente el contenido de cada grupo */
+}
+
+.nav-left {
+  justify-content: flex-start;
+  /* Alinea el botón de hamburguesa a la izquierda */
+}
+
+.nav-center {
+  justify-content: center;
+  /* Centra el H1 en su contenedor */
+}
+
+.nav-right {
+  justify-content: flex-end;
+  /* Alinea los logos/botones a la derecha */
+}
+
+/* Estilos para el logo de la derecha */
+.nav-logo {
+  height: 40px;
+  width: auto;
+}
+
+/*
+--- SECCIÓN DEL MENÚ HAMBURGUESA ---
+*/
+
+/* 1. Botón del menú hamburguesa (las 3 líneas) */
+.hamburger-btn {
+  display: block;
+  /* Siempre visible (PC y móvil) */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  z-index: 101;
+  /* Se asegura que esté por encima del menú desplegable */
+
+  /* 2. Cursor del botón de hamburguesa */
+  cursor: url("resources/sharingan_cursor.cur"), auto;
+}
+
+/* 2. Menú desplegable (lista de enlaces) */
+header nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  /* Quita los puntos de la lista */
+
+  /* Posicionamiento del menú */
+  position: absolute;
+  top: 100%;
+  /* Se "engancha" justo debajo de la barra <nav> */
+  left: 0;
+  width: 302px;
+
+  /* Apariencia del menú */
+  background-color: rgba(51, 51, 51, 0.95);
+  z-index: 100;
+  /* Se asegura que esté sobre el contenido (pero debajo del botón) */
+  display: flex;
+  flex-direction: column;
+  /* Apila los enlaces verticalmente */
+  align-items: center;
+  /* Centra los enlaces */
+  padding: 20px 0 20px 0;
+  border: 1px solid #555;
+  border-radius: 8px;
+
+  /* Animación de entrada/salida (estado cerrado por defecto) */
+  opacity: 0;
+  /* Inicia invisible */
+  visibility: hidden;
+  /* Inicia oculto y no-interactivo */
+  transform: translateY(-15px);
+  /* Inicia 15px "arriba" */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  /* La animación */
+}
+
+/* 3. Clase que 'abre' el menú (la añade/quita JavaScript) */
+nav ul.menu-open {
+  /* Estado abierto de la animación */
+  opacity: 1;
+  /* Se vuelve visible */
+  visibility: visible;
+  /* Se vuelve interactivo */
+  transform: translateY(0);
+  /* Vuelve a suposición normal */
+}
+
+/* 4. Cada item de la lista del menú */
+header nav ul li {
+  display: inline;
+  margin: 8px 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* 5. Enlaces con recuadro (dentro del menú) */
+header nav ul a {
+  color: #fff;
+  text-decoration: none;
+  /* Quita el subrayado */
+  transition: all 0.3s ease;
+  /* Animación suave para el :hover */
+  padding: 10px 15px;
+  font-size: 16px;
+
+  /* Estilos del recuadro */
+  display: inline-block;
+  /* Permite darle ancho y centrarlo */
+  text-align: center;
+  border: 1px solid #777;
+  border-radius: 5px;
+  width: 250px;
+  /* Ancho fijo */
+  max-width: 90%;
+  /* Se encoge si la pantalla es muy pequeña */
+
+  /* 3. Cursor de los enlaces del menú */
+  cursor: url("resources/sharingan_cursor.cur"), auto;
+}
+
+/* 6. Efecto al pasar el mouse sobre un enlace */
+header nav ul a:hover {
+  color: #0dcaf0;
+  /* Color del texto */
+  background-color: #555;
+  /* Color del fondo */
+  border-color: #0dcaf0;
+  /* Color del borde */
+}
+
+
+/*
+=====================================================
+--- CONTENIDO PRINCIPAL (MAIN) ---
+Estilos para el contenedor central de la página.
+=====================================================
+*/
+
+/* Contenedor del contenido principal (fondo semitransparente) */
+main {
+  padding: 20px;
+  max-width: 800px;
+  /* Ancho máximo, se centra solo */
+  margin: auto;
+  /* Centrado automático */
+  text-align: center;
+  background-color: rgba(187, 2, 2, 0.3);
+  /* Fondo rojo al 30% */
+  border-radius: 10px;
+}
+
+/* Estilo general para secciones (fondo blanco) */
+section,
+aside {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  /* Fondo blanco sólido */
+  border-radius: 8px;
+}
+
+/*
+=====================================================
+--- SECCIONES ESPECÍFICAS (CARRUSEL, MÚSICA, ETC.) ---
+=====================================================
+*/
+
+/* --- Galería de imágenes (carrusel) --- */
+figure.carousel-container {
+  max-width: 800px;
+  margin: auto;
+  overflow: hidden;
+  /* Oculta las imágenes que se salen */
+  border-radius: 8px;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  /* Proporción 16:9 (pantalla ancha) */
+}
+
+.carousel-slide {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  /* Se asegura que la imagen llene el espacio sin deformarse */
+}
+
+/* Botones de flechas (anterior/siguiente) del carrusel */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Centrado vertical perfecto */
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+/* --- Estilos de la galería (opcional) --- */
+#wallpaper-gallery h2 {
+  text-align: center;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* --- Sección del reproductor de música --- */
+#music-player-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#music-player-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+#song-name {
+  font-style: italic;
+  color: #555;
+  margin-top: 0;
+}
+
+/* Controles del reproductor (botones y barra) */
+.player-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  /* Espacio entre botones y barra */
+}
+
+#audioPlayer {
+  width: 70%;
+  max-width: 400px;
+}
+
+/* Botones de música (prev/next) */
+.music-btn {
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  /* Los hace redondos */
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.music-btn:hover {
+  background: #555;
+}
+
+/* --- Pie de página --- */
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #333;
+  color: #fff;
+}
+
+footer p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/*
+=====================================================
+--- PÁGINAS DE PERSONAJES (INFOBOX) ---
+Estilos para las páginas con descripciones.
+=====================================================
+*/
+
+/* 1. Contenedor de un perfil de personaje (Infobox + Descripción) */
+.character-profile {
+  display: flex;
+  /* Pone las columnas una al lado de la otra */
+  gap: 20px;
+  margin-bottom: 30px;
+  text-align: left;
+  /* Anula el 'text-align: center' del <main> */
+}
+
+/* 2. Regla para alternar: 2do, 4to, etc. perfil */
+.character-profile:nth-of-type(even) {
+  flex-direction: row-reverse;
+  /* Invierte el orden (Infobox a la derecha) */
+}
+
+
+/* 3. Columna del Infobox (personaje) */
+.character-infobox {
+  flex-basis: 300px;
+  /* Ancho fijo de la columna */
+  flex-shrink: 0;
+  /* Evita que se encoja */
+  padding: 15px;
+  margin-bottom: 0;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+.infobox-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.infobox-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.infobox-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.infobox-table th,
+.infobox-table td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+.infobox-table th {
+  background-color: #f1f1ff;
+  text-align: left;
+  width: 30%;
+}
+
+.infobox-table td {
+  text-align: left;
+  width: 70%;
+}
+
+/* 4. Columna de la descripción (personaje) */
+.character-description {
+  flex-grow: 1;
+  /* Toma el espacio restante */
+  padding: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  /* Fondo transparente */
+}
+
+.character-description p {
+  line-height: 1.7;
+}
+
+/* --- GIF de Descripción (Personajes) --- */
+
+/* Contenedor semántico del GIF */
+.description-media {
+  margin: 20px auto 0;
+  /* 20px de espacio arriba, centrado automático */
+  width: 100%;
+  /* Ocupa el 100% del ancho de la columna */
+  max-width: 800px;
+  /* Límite de 450px para que no sea gigante en escritorio */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  overflow: hidden;
+  /* Asegura que el GIF no se salga de los bordes redondeados */
+  aspect-ratio: 16 / 9;
+  /* Proporción 16:9 */
+}
+
+/* El GIF dentro del contenedor */
+.description-media img {
+  display: block;
+  /* Elimina espacio extra debajo de la imagen */
+  width: 100%;
+  /* Llena el 100% del ancho... */
+  height: 100%;
+  /* ...y el 100% de la altura del contenedor 16:9 */
+  object-fit: cover;
+  /* Recorta el GIF (sin deformarlo) para que llene el espacio */
+}
+
+
+/*
+=====================================================
+--- LOGO DE INFOBOX (PERSONAJES) ---
+=====================================================
+*/
+
+/* 1. Contenedor del logo */
+.logo-personaje-container {
+  display: flex;
+  justify-content: center;
+  /* Centrado horizontal */
+  align-items: center;
+  /* Centrado vertical */
+
+  margin: 0;
+  /* Reseteamos el margen de <figure> */
+  margin-top: 15px;
+  /* Añadimos margen superior */
+  padding-top: 15px;
+  /* Espacio entre la tabla y el logo */
+  border-top: 1px solid #eee;
+  /* Línea divisoria */
+}
+
+/* 2. Estilos del logo en sí */
+.logo-personaje-img {
+  max-width: 150px;
+  /* Un tamaño razonable */
+  height: auto;
+  /* Mantiene la proporción */
+  opacity: 0.8;
+  /* Un poco transparente */
+}
+
+/*
+=====================================================
+--- BOTÓN DE MODO OSCURO ---
+=====================================================
+*/
+.mode-btn {
+  background: none;
+  border: 1px solid #777;
+  color: white;
+  font-size: 18px;
+  /* Tamaño del emoji */
+  cursor: pointer;
+  border-radius: 50%;
+  /* Círculo */
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  /* Centra el emoji verticalmente */
+  padding: 0;
+  margin-right: 10px;
+  /* Espacio entre el botón y el logo */
+  transition: all 0.3s ease;
+  z-index: 101;
+  /* Asegura que esté visible */
+}
+
+.mode-btn:hover {
+  background-color: #555;
+  border-color: #0dcaf0;
+}
+
+
+/*
+=====================================================
+--- ESTILOS DEL MODO OSCURO ---
+=====================================================
+*/
+
+/* 1. Fondo principal y texto general */
+body.dark-mode {
+  background-image: url("img/Fondo_Oscuro.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #121212;
+  /* Color por si la imagen no carga */
+  color: #f1f1f1;
+  /* Texto general claro */
+}
+
+/* 2. El 'main' (fondo semitransparente) */
+body.dark-mode main {
+  /* Usamos un fondo oscuro, ya no el rojo */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* 3. Las cajas blancas (secciones, aside) */
+body.dark-mode section,
+body.dark-mode aside {
+  background-color: #1e1e1e;
+  /* Color oscuro para las "hojas" */
+  border: 1px solid #333;
+  /* Borde sutil */
+}
+
+/* 4. Infobox y tablas */
+body.dark-mode .character-infobox {
+  background-color: #2b2b2b;
+  border-color: #444;
+}
+
+body.dark-mode .infobox-title {
+  border-bottom-color: #444;
+}
+
+body.dark-mode .infobox-table th,
+body.dark-mode .infobox-table td {
+  border-bottom-color: #444;
+}
+
+body.dark-mode .infobox-table th {
+  background-color: #333;
+}
+
+/* 5. Header y Footer */
+body.dark-mode header {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+}
+
+body.dark-mode footer {
+  background-color: #1a1a1a;
+  border-top: 1px solid #333;
+}
+
+/* 6. Menú desplegable */
+body.dark-mode header nav ul {
+  background-color: rgba(26, 26, 26, 0.95);
+  border-color: #333;
+}
+
+body.dark-mode header nav ul a {
+  border-color: #555;
+}
+
+body.dark-mode header nav ul a:hover {
+  background-color: #333;
+  border-color: #0dcaf0;
+}
+
+/* 7. Texto del reproductor */
+body.dark-mode #song-name {
+  color: #aaa;
+}
+
+/* 8. Logo del personaje (para que no sea tan opaco) */
+body.dark-mode .logo-personaje-img {
+  opacity: 0.6;
+}
+
+
+/*
+=====================================================
+--- ZONA DE ESTILOS RESPONSIVE (PARA MÓVIL/TABLET) ---
+(Se aplica a pantallas de 768px o MENOS)
+=====================================================
+*/
+
+@media (max-width: 768px) {
+
+  /* Muestra el video de fondo en móvil */
+  .mobile-video {
+    display: block;
+  }
+
+  /* --- Fondo de pantalla para móvil --- */
+  body {
+    background-image: none; /* Se elimina la imagen para ver el video */
+    background-color: transparent;
+  }
+
+  /* --- Ajustes de centrado y transparencia del contenido --- */
+  main {
+    padding: 10px;
+    background-color: rgba(187, 2, 2, 0.2);
+    text-align: center; 
+    
+    width: calc(100% - 20px); 
+    margin: 0 auto; 
+    box-sizing: border-box; 
+  }
+
+  section,
+  aside {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-left: auto; 
+    margin-right: auto;
+    max-width: 100%; 
+    padding: 15px; 
+    box-sizing: border-box; 
+  }
+  
+  .infobox-table th, .infobox-table td {
+      text-align: left; 
+  }
+
+  /* --- Ajustes del nav bar en móvil --- */
+  nav {
+    padding: 0.5rem 10px;
+  }
+
+  /* --- Título centrado (sin pos. absoluta) --- */
+  header h1 {
+    font-size: 1.0rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+
+  /* Devuelve el menú al 100% de ancho en móvil */
+  header nav ul {
+    width: 100%;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  /* --- Ajustes de los perfiles de personaje --- */
+
+  .character-profile {
+    flex-direction: column;
+    text-align: center; 
+    width: 100%; 
+    box-sizing: border-box;
+    padding: 0 5px; 
+  }
+
+  .character-profile:nth-of-type(even) {
+    flex-direction: column;
+  }
+
+  .character-infobox {
+    flex-basis: 100%;
+    max-width: 100%; 
+    margin: 10px auto; 
+  }
+
+  .infobox-title {
+      text-align: center; 
+  }
+
+  .character-description {
+      max-width: 100%; 
+      margin: 10px auto; 
+  }
+
+  .character-description p {
+    text-align: left;
+  }
+
+
+  /* --- Ajuste del carrusel --- */
+
+  figure.carousel-container {
+    aspect-ratio: 4 / 3;
+    max-width: 100%; 
+    margin: 10px auto; 
+  }
+
+  /* --- Ajuste del reproductor de música --- */
+
+  .player-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #audioPlayer {
+    width: 100%;
+  }
+
+  /* =====================================================
+  --- AJUSTES DE MODO OSCURO EN MÓVIL ---
+  =====================================================
+  */
+
+  body.dark-mode {
+    background-image: none; /* Se elimina la imagen para ver el video */
+    background-color: transparent;
+  }
+
+  body.dark-mode main {
+    background-color: rgba(0, 0, 0, 0.5); 
+  }
+
+  body.dark-mode section,
+  body.dark-mode aside {
+    background-color: rgba(30, 30, 30, 0.7); 
+  }
+
+  body.dark-mode .character-description p {
+    text-align: left;
+  }
+
+  .mode-btn {
+    font-size: 16px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+  }
+}

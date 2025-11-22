@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐦‍🔥 Anime Girls Fan Page 🐦‍🔥</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <video class="mobile-video" autoplay muted loop playsinline>
+    <source src="Fan_Page/vid/nezuko.mp4" type="video/mp4">
+  </video>
+
+  <header>
+    <nav>
+      <div class="nav-left">
+        <button class="hamburger-btn" id="hamburger-btn">&#9776;</button>
+      </div>
+
+      <div class="nav-center">
+        <h1>🐦‍🔥 Fan Page 🐦‍🔥</h1>
+      </div>
+
+      <div class="nav-right">
+        <button id="darkModeToggle" class="mode-btn">🌙</button>
+        <img src="img/logo.png" alt="Logo Derecho" class="nav-logo" />
+      </div>
+
+      <ul id="nav-links">
+        <li><a href="index.html" target="_self">Inicio</a></li>
+        <li>
+          <a href="black_clover.html" target="_self">Black Clover Girls</a>
+        </li>
+        <li>
+          <a href="chainsaw_man.html" target="_self">Chainsaw Man Girls</a>
+        </li>
+        <li>
+          <a href="demon_slayer.html" target="_self">Demon Slayer Girls</a>
+        </li>
+        <li>
+          <a href="jujutsu_kaisen.html" target="_self">Jujutsu Kaisen Girls</a>
+        </li>
+        <li><a href="overlord.html" target="_self">Overlord Girls</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio-content">
+      <h2>Bienvenid@s a la página!</h2>
+      <article>
+        <p>
+          En esta página podrás conocer a las chicas de anime más famosas
+          actualmente, además de encontrar sus descripciones y fondos de
+          pantalla.
+        </p>
+      </article>
+    </section>
+
+    <section id="sobre-proyecto">
+      <h2>Sobre este proyecto</h2>
+      <article>
+        <p>
+          Esta "Fan Page" es un proyecto escolar con el cual se busca
+          practicar para desarrollar webs a nivel profesional.
+        </p>
+        <p>
+          Se combinan HTML5 semántico junto con CSS3 y Javascript, el cual
+          ayuda a que los elementos visuales se vean de una manera óptima
+          tanto en la versión móvil/tablet, así como en la versión de
+          escritorio. Incorpora distintos botónes con enlaces a las subpáginas
+          en el menú hamburguesa, así como elementos como el reproductor de
+          música, carrusel de imagenes y botón de curiosidades que son
+          ayudados por javascript.
+        </p>
+
+        <figure class="description-media">
+          <img src="img/oguri-cap.gif" alt="GIF animado del proyecto" />
+        </figure>
+      </article>
+    </section>
+    <section id="galeria">
+      <h2>Galería de Imágenes</h2>
+      <figure class="carousel-container">
+        <button id="prevBtn" class="carousel-btn prev-btn">❮</button>
+        <span class="carousel-slide">
+          <img src="img/demon_slayer/Kanae.jpg" alt="Kanae" />
+          <img src="img/demon_slayer/Mitsuri.jpeg" alt="Mitsuri" />
+          <img src="img/black_clover/Vanessa.jpg" alt="Vanessa" />
+          <img src="img/black_clover/Noelle.jpg" alt="Noelle" />
+          <img src="img/chainsaw_man/yoru.jpg" alt="Yoru" />
+          <img src="img/chainsaw_man/Makima.png" alt="Makima" />
+          <img src="img/jujutsu_kaisen/Maki.jpeg" alt="Maki" />
+          <img src="img/jujutsu_kaisen/Nobara.jpg" alt="Nobara" />
+          <img src="img/overlord/Albedo.jpg" alt="ALbedo" />
+        </span>
+        <button id="nextBtn" class="carousel-btn next-btn">❯</button>
+      </figure>
+    </section>
+
+    <section id="music-player-section">
+      <h2>Música de Fondo</h2>
+      <p id="song-name">Cargando música...</p>
+      <figure class="player-controls">
+        <button id="prev-song" class="music-btn">⏮</button>
+        <audio id="audioPlayer" controls>
+          <source src="music/PAiNT it BLACK.flac" type="audio/flac" />
+          <source src="music/VORACITY.flac" type="audio/flac" />
+          <source src="music/Ao no Sumika .mp3" type="audio/mpeg" />
+          <source src="music/First Death.mp3" type="audio/mpeg" />
+          <source src="music/Gurenge.mp3" type="audio/mpeg" />
+          <source src="music/Senno Tsubasa.mp3" type="audio/mpeg" />
+          <source src="music/Linked Horizon - Shinzo wo Sasageyo !.mp3" type="audio/mpeg" />
+          <source src="music/Red Swan.mp3" type="audio/mpeg" />
+          <source src="music/Rosa Walton - I Really Want to Stay at Your House.mp3" type="audio/mpeg" />
+          <source src="music/TK from Ling tosite sigure - Tagatame.mp3" type="audio/mpeg" />
+          <source src="music/Tommy heavenly6 - PAPERMOON.mp3" type="audio/mpeg" />
+          <source src="music/Tommy heavenly6 - Pray.mp3" type="audio/mpeg" />
+          <source src="music/Zettai Reido.mp3" type="audio/mpeg" />
+          <source src="music/UN-APEX.mp3" type="audio/mpeg" />
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+        <button id="next-song" class="music-btn">⏭</button>
+      </figure>
+    </section>
+
+    <aside id="curiosidades">
+      <h3>Datos Curiosos 😎</h3>
+      <button id="botonCuriosidad">Mostrar curiosidades!</button>
+      <p id="textoCuriosidad"></p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Derechos reservados - 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
