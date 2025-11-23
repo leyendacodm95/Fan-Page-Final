@@ -318,3 +318,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// ===========================================
+  // --- LÓGICA DE EFECTO SAKURA ---
+  // ===========================================
+  
+  function crearPetalo() {
+    const petalo = document.createElement("span");
+    petalo.classList.add("sakura-petal");
+
+    // Posición horizontal aleatoria (0 a 100% del ancho de pantalla)
+    const startLeft = Math.random() * 100;
+    
+    // Tamaño aleatorio entre 10px y 20px
+    const size = Math.random() * 10 + 10;
+    
+    // Duración de la animación aleatoria entre 6s y 12s
+    const duration = Math.random() * 6 + 6;
+
+    // Aplicación de estilos dinámicos
+    petalo.style.left = startLeft + "vw";
+    petalo.style.width = size + "px";
+    petalo.style.height = size + "px";
+    petalo.style.animation = `fall-sway ${duration}s linear`;
+
+    document.body.appendChild(petalo);
+
+    // Elimina el elemento del DOM cuando termina la animación
+    setTimeout(() => {
+      petalo.remove();
+    }, duration * 1000);
+  }
+
+  // Genera un pétalo cada 300ms
+  setInterval(crearPetalo, 300);
