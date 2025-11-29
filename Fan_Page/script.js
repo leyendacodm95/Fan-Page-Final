@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentSongIndex = shuffledPlaylist[playlistIndex];
       playlistIndex++;
   
-      audioPlayer.volume = 0.25; // Volumen inicial bajo
+      audioPlayer.volume = 0.10; // Volumen inicial bajo
       audioPlayer.src = sources[currentSongIndex].src;
   
       // 8. Control de AUTOPLAY (Solo en página principal)
